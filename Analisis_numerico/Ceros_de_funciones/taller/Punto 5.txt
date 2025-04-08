@@ -1,0 +1,52 @@
+"""
+ Con base en el trabajo de Frank Kamenetski realizado en 1995, las temperaturas en el interior
+de un material con fuentes de calor incrustadas pueden determinarse si se resuelve la siguiente
+ecuaci´on.
+
+(e^-(1/2)t)((cosh)^-1)(e(1/2)t) = sqrt((1/2)Lct)
+
+Dado que Lct = 0.088, encuentre el valor de t
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def biseccion(funcion, a, b, tolerancia):
+
+    if funcion(a)*funcion(b)>0:
+        print("La funcion no cumple el teorema en el intervalo dado")
+        return
+    else:
+        #print("Buscandoooo")
+        contador = 0
+        while abs(b - a) > tolerancia:
+            p = (a + b) / 2
+            contador += 1
+            if funcion(a)*funcion(p) > 0:
+                a = p
+            else:
+                b = p
+        return contador, p
+
+Lct = 0.088
+funcion = lambda t : (np.exp((-1/2)*t))*(np.arccosh(np.exp((1/2)*t))) - np.sqrt((1/2)*Lct)
+iteraciones, raiz = biseccion(funcion, 5, 6, 1e-6)
+print(f"El valor de t es: {raiz} y se encontro en {iteraciones} iteraciones")
+
+t_valores = np.linspace(0.1, 10, 1000)
+f_valores = [funcion(t) for t in t_valores]
+
+#---------------------------------------------------------#
+
+plt.figure(figsize=(10, 6))
+plt.plot(t_valores, f_valores, label='f(t)')
+plt.axhline(y=0, color='r', linestyle='--', alpha=0.5)
+
+plt.title('Grafica de la funcion de Frank Kamenetski')
+plt.ylabel('f(t)')
+plt.xlabel('t')
+
+plt.scatter([raiz], [0], color='g', s=50, zorder=5)
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,54 @@
+#lang racket
+
+(struct account (id balance active) #:transparent)
+
+(define accounts
+  (list
+   (account 1 1000 #t)
+   (account 2 -50 #t)
+   (account 3 200 #t)
+   (account 4 500 #t)
+   (account 5 0 #t)))1
+
+(define (deposit acc amount)
+  (if (and (account-active acc) (positive? amount))
+      (account (account-id acc) (+ (account-balance acc) amount) (account-active acc))
+      acc))
+
+(define (withdraw acc amount)
+  (if (and (account-active acc)
+           (positive? amount)
+           (>= (account-balance acc) amount))
+      (account (account-id acc) (- (account-balance acc) amount) (account-active acc))
+      acc))
+
+(define (filter-positive-active-accounts accounts)
+  (filter (lambda (acc)
+            (and (account-active acc) (> (account-balance acc) 0)))
+          accounts))
+
+(define (display-accounts accounts)
+  (for-each (lambda (acc)
+              (printf "Account ID: ~a, Balance: ~a, Active: ~a\n"
+                      (account-id acc)
+                      (account-balance acc)
+                      (account-active acc)))
+              accounts))
+
+(define updated-accounts
+  (map (lambda (acc)
+         (cond
+           [(= (account-id acc) 1) (deposit acc 500)]
+           [(= (account-id acc) 2) (withdraw acc 50)]
+           [(= (account-id acc) 4) (withdraw acc 100)]
+           [else acc]))
+       accounts))
+
+(define positive-active-accounts (filter-positive-active-accounts updated-accounts))
+
+(displayln "All Accounts:")
+(display-accounts updated-accounts)
+
+(displayln "\nPositive Active Accounts:")
+(display-accounts positive-active-accounts)
+           

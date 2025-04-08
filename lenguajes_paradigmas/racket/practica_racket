@@ -1,0 +1,19 @@
+#lang racket
+
+(struct client (id username password balance))
+
+(struct seller (id username password))
+
+(define users
+  (list
+   (client 1 "luis_goez" "1411" 1000000)
+   (client 2 "felipe" "123" 500000)
+   (client 3 "pablo" "1234" 100000)
+   (seller 1 "juangui" "123")
+   ))
+
+(define (login username password)
+  (map (lambda (acc)
+         (if (and(= (client-username acc) username)
+                 (= (client-password acc) password)))
+  

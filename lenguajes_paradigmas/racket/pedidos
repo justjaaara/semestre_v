@@ -1,0 +1,25 @@
+#lang racket
+(struct pedido (id cliente monto))
+
+; Generamos la lista de pediddos
+(define pedidos
+  (list (pedido 1 "Cliente A" 150.0)
+        (pedido 2 "Client B" 75.0)
+        (pedido 3 "Client C" 200.0)
+        (pedido 4 "Client D" 50.0)
+        (pedido 5 "Client E" 300.0)))
+
+(define umbral 100.0)
+
+; function pedidosFiltrados(pedidos, umbral) {
+;  return pedidos.filter(p => p.monto > umbral);
+;}
+
+(define pedidos-filtrados
+  (filter (lambda (p) (> (pedido-monto p) umbral)) pedidos))
+
+; function totalIngresos(
+(define total-ingresos
+  (foldl (lambda (p acc) (+ (pedido-monto p) acc)) 0 pedidos-filtrados))
+
+(printf "Total de ingresos de pedidos que superan el umbral de ~a: ~a\n" umbral total-ingresos)

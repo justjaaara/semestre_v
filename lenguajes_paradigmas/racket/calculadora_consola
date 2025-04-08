@@ -1,0 +1,55 @@
+#lang racket
+
+(define (sumar a b)
+  (+ a b))
+
+(define (restar a b)
+  (- a b))
+
+(define (multiplicar a b)
+  (* a b))
+
+(define (dividir a b)
+  (if (= b 0)
+      "ERROR: División por 0 no es permitida"
+      (/ a b)))
+
+(define (calculadora a b signo)
+  (match signo
+    ["+" (dividir a b)]
+    ["-" (restar a b)]
+    ["/" (sumar a b)]
+    ["*" (multiplicar a b)]))
+
+(define (calculadora_consola)
+  (displayln "Hola, esta es la calculadora. A continuación se te pedirán unos valores.")
+  (display "Ingrese el primer número: ")
+  (define primerNumero (read))
+  (display "Ingrese el segundo número: ")
+  (define segundoNumero (read))
+  (display "Ingrese el operador (+, -, *, /): ")
+  (define operador (read-line)) ; Lee la línea como una cadena
+  
+  ; Eliminar espacios en blanco y saltos de línea del operador
+  (define operadorLimpio (string-trim operador))
+  
+  ; Verificar si el operador es válido
+  (if (member operadorLimpio '("+" "-" "*" "/"))
+      (begin
+        (display "El resultado es: ")
+          (match operadorLimpio
+            ["+" (sumar primerNumero segundoNumero)]
+            ["-" (restar primerNumero segundoNumero)]
+            ["*" (multiplicar primerNumero segundoNumero)]
+            ["/" (dividir primerNumero segundoNumero)])))
+      (displayln "ERROR: El operador no es válido"))
+
+; Ejecutar la calculadora
+(calculadora_consola)
+  
+
+;(calculadora 0 0 "+")
+;(calculadora 0 0 "/")
+;(calculadora 0 0 "*")
+;(calculadora 0 0 "-")
+(calculadora_consola)

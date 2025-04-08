@@ -1,0 +1,19 @@
+#lang racket
+
+(require racket/string);
+
+
+(define (correo-valido? correo)
+
+  (regexp-match? #px"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z] {2,}$" correo))
+
+(define (filtrar-correos-validos lista-correos)
+  (filter correo-valido? lista-correos))
+
+(define correos '("juangui@dominio.com"
+                  "juangui2@dominio."
+                  "notieneformato@dominio"
+                  "estesaleenlalista@correo.net"
+                  "juliestasporaca@ejemplo.com"))
+
+(filtrar-correos-validos correos)

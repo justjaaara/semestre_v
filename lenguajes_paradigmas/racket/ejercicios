@@ -1,0 +1,26 @@
+#lang racket
+
+(+ 1 2)
+;(print "Hola Gente")
+
+;definiendo una función
+(define (suma operando1 operando2)
+  (+ operando1 operando2))
+(suma 3 4)
+
+;definiendo un ciclo
+(define (loop i)
+  (when (< i 10) ; Cuando sea menos que 10
+    (printf "i=~a\n" i) ; Lo imprime
+    (loop (add1 i)))) ; Llama al loop mientras i < 10
+(loop 5) ; parametro del loop
+
+;-------------------------
+(for ([i (in-list '(M i n o m b r e e s J U A N))])
+  (displayln i))
+
+;-----------------------------
+(member 'Juan '(Name Juan Gui))
+(if (member 'Juan '(Name Juan Gui))
+    'yep
+    'nope)

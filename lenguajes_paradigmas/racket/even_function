@@ -1,0 +1,13 @@
+#lang racket
+
+(define (filtrar-pares lista)
+
+  (if (null? lista)
+      '()
+
+      (if (even? (first lista))
+          (cons (first lista)  (filtrar-pares (rest lista)))
+
+          (filtrar-pares (rest lista)))))
+
+(filtrar-pares '(1 2 3 4 5 6))

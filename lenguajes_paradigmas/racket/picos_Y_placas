@@ -1,0 +1,47 @@
+#lang racket
+
+
+(struct pico_y_placa (id dia num1 num2)#:transparent)
+
+;Definamos todos los días
+(define picos_y_placas
+  (list (pico_y_placa 1 "Lunes" 3 4)
+        (pico_y_placa 2 "Martes" 2 8)
+        (pico_y_placa 3 "Miércoles" 5 9)
+        (pico_y_placa 4 "Jueves" 1 7)
+        (pico_y_placa 5 "Viernes" 0 6)))
+
+(define (tengo_pico_pp)
+  (printf "Escoge qué día de la semana quieres conocer el pico y placa\n")
+  (printf "1. Lunes\n")
+  (printf "2. Martes\n")
+  (printf "3. Miércoles\n")
+  (printf "4. Jueves\n")
+  (printf "5. Viernes\n")
+  (printf "Ingrese el número del día que quiere consultar: ")
+  (define dia_elegido (read))
+  (printf "Ahora ingrese el último digito de la placa de su carro: ")
+  (define ultimo_digito (read))
+  (define dia_encontrado
+    (findf (lambda (pico_p)
+             (= (pico_y_placa-id pico_p) dia_elegido))
+           picos_y_placas))
+  (define dia_pp
+    (findf (lambda (pico_p)
+             (or (= ultimo_digito (pico_y_placa-num1 pico_p))
+                 (= ultimo_digito (pico_y_placa-num2 pico_p))))
+             picos_y_placas))
+
+  (cond
+    [(not dia_encontrado)
+     (displayln "ERROR: El día que escogío no es válido")]
+    [(or (= ultimo_digito (pico_y_placa-num1 dia_encontrado))
+         (= ultimo_digito (pico_y_placa-num2 dia_encontrado)))
+     (printf "Tienes pico y placa el ~a\n"
+             (pico_y_placa-dia dia_encontrado))]
+    [else
+     (printf "No tienes pico y placa ese día\n")
+     (printf "Tienes pico y placa el día ~a"
+             (pico_y_placa-dia dia_pp))]))
+
+(tengo_pico_pp)
