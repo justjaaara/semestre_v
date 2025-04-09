@@ -1,0 +1,31 @@
+Diseño de la arquitectura de procesos para la mejora de la experiencia del cliente y el aumento de ventas en una aerolínea
+
+La gestión eficiente de los procesos en una aerolínea es clave para garantizar una experiencia de cliente fluida y fortalecer la rentabilidad del negocio. 
+Por lo tanto, se espera diseñar una arquitectura de procesos enfocada en la optimización del procesoo de gestión integral del viaje del cliente y estrategia de venta y fidelización multicanal.
+
+Cada uno de estos procesos presenta problemáticas que impactan directamente la satisfacción del pasajero y la eficiencia operativa. 
+Los arquitectos deberán analizar y modelar la arquitectura de procesos correspondiente, asegurando que se incluyan entre 30 y 40 actividades por cada proceso, 
+incorporando automatización, puntos de decisión, integración con sistemas y actores clave.
+
+El objetivo es desarrollar una estructura clara y eficiente que permita a la aerolínea ofrecer una experiencia sin fricciones, 
+mejorar su capacidad de respuesta ante imprevistos y potenciar su estrategia de fidelización y ventas. Se espera que los modelos 
+propuestos reflejen una evolución hacia procesos más digitales, automatizados e interconectados, alineados con las mejores prácticas 
+del sector aeronáutico.
+
+Los procesos para tener en cuenta son los siguientes:
+
+1. Gestión integral del viaje del cliente
+El proceso de compra y gestión del viaje de los clientes presenta varios obstáculos que afectan su experiencia. 
+Actualmente, los pasajeros enfrentan dificultades al buscar vuelos, realizar reservas, hacer cambios en su itinerario y completar el check-in. 
+Además, la información sobre su vuelo y otros servicios no siempre está accesible de manera clara y oportuna en los canales digitales. 
+También hay poca personalización en las ofertas y recomendaciones, lo que hace que los clientes no siempre encuentren opciones adaptadas a sus necesidades. 
+La aerolínea necesita optimizar este proceso para hacerlo más ágil, intuitivo y alineado con las expectativas de los pasajeros, asegurando una experiencia 
+sin fricciones desde la planificación hasta la llegada al destino.
+
+2. Cuando un vuelo se retrasa, se cancela o hay un cambio inesperado en la operación, los clientes experimentan incertidumbre y frustración porque la aerolínea 
+no les informa de manera rápida y clara sobre qué hacer. Los procesos actuales para notificar cambios, gestionar la reprogramación de vuelos, asignar compensaciones o 
+reubicar pasajeros no están completamente automatizados ni integrados con los sistemas digitales de atención. Esto provoca largas esperas, quejas y un impacto negativo 
+en la satisfacción del cliente. Es fundamental diseñar un proceso que permita gestionar estas situaciones de forma eficiente y proactiva, asegurando que la aerolínea 
+pueda responder en tiempo real y minimizar la afectación a los pasajeros.
+
+En equipos deben realizar una propuesta de arquitectura en Archimate según las instrucciones dadas. Deben detallar cada uno de los procesos según el análisis que realicen según los objetivos asociados a la gestión del viaje y la venta y fidelización.
