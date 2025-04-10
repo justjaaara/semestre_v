@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Proceso aerolínea" id="id-040b1b3523cf4d2e926149fd9900815a" version="5.0.0">
+  <folder name="Strategy" id="id-33e920c2b3a44455ad174202f385d5f6" type="strategy"/>
+  <folder name="Business" id="id-810eca20434a49029f2c01fe67a125a4" type="business"/>
+  <folder name="Application" id="id-4b8089123a1c43399eb6eaedb387df52" type="application"/>
+  <folder name="Technology &amp; Physical" id="id-6b20bfc3820747a8a8d8b564edd3920c" type="technology"/>
+  <folder name="Motivation" id="id-e6392f7556b4490babd0414a3a626071" type="motivation"/>
+  <folder name="Implementation &amp; Migration" id="id-22f57406714b48779d9a11f3098a90ca" type="implementation_migration"/>
+  <folder name="Other" id="id-15a67db5d1284cc09a2c875484a16105" type="other"/>
+  <folder name="Relations" id="id-92286b921e3c4fbdbfd453dbc01ac5a3" type="relations"/>
+  <folder name="Views" id="id-d7635b3320cc4f0ea3ed242ca9c721a6" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Default View" id="id-ad229f7861a74586b39f671490d959c6"/>
+  </folder>
+</archimate:model>
