@@ -4,7 +4,7 @@ import _thread
 
 class Pluviometer:
     
-    def __init__(self, input_pin_number = 16):
+    def __init__(self, input_pin_number = 25):
         self.counter = 0
         self.input_pin_number = input_pin_number
         self.input_pin = Pin(self.input_pin_number, Pin.IN, pull = Pin.PULL_DOWN)
@@ -20,6 +20,9 @@ class Pluviometer:
         self.counter = 0
         
     def edge_detected(self, pin_value):
+        pin_str = str(pin_value)  # Convierte "Pin(25)" a string
+        pin_number = int(pin_str[4:-1])  # Extrae el número entre paréntesis
+        print(f"Pin número: {pin_number}")
         self.tim.init(mode = Timer.ONE_SHOT, period = 300, callback = self.count_pulse)
         
     def count_pulse(self, tim):

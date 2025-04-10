@@ -4,7 +4,7 @@ import _thread
 
 class Led:
     
-    def __init__(self, pin_number = 17, blink_time = [1, 5], input_pin_number = 16):
+    def __init__(self, pin_number = 14, blink_time = [1, 5], input_pin_number = 13):
         self.pin_number = pin_number
         self.blink_time = blink_time
         self.counter = 0
