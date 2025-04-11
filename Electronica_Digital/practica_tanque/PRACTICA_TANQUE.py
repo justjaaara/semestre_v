@@ -3,7 +3,7 @@ import time
 import _thread
 
 class SensorUltrasonico:
-    def __init__(self, trigger_pin_number=26, echo_pin_number=27, num_samples=50,
+    def __init__(self, trigger_pin_number=26, echo_pin_number=27,
                  sensor_min=10.90, real_min=10, sensor_max=99.16, real_max=100):
         self.tank_height = 100
         self.trigger = Pin(trigger_pin_number, Pin.OUT)
@@ -23,25 +23,24 @@ class SensorUltrasonico:
         time.sleep_us(10)
         self.trigger.off()
 
-        timeout_us = 30000  # 30 ms como máximo
+        timeout_us = 30000  # 30 ms
 
         start = time.ticks_us()
         while self.echo.value() == 0:
             if time.ticks_diff(time.ticks_us(), start) > timeout_us:
-                return -1  # error: timeout esperando que suba echo
+                return -1  
 
         t1 = time.ticks_us()
         while self.echo.value() == 1:
             if time.ticks_diff(time.ticks_us(), t1) > timeout_us:
-                return -1  # error: timeout esperando que baje echo
+                return -1 
         t2 = time.ticks_us()
 
         duration = time.ticks_diff(t2, t1)
         distance_in_cm = duration / 58.0
 
-        # Validación de rango razonable antes de calibrar
         if distance_in_cm < 0 or distance_in_cm > (self.tank_height + 20):
-            return -1  # lectura inválida
+            return -1 
 
         return self.calibrate_distance(distance_in_cm)
 
@@ -67,12 +66,11 @@ class SensorUltrasonico:
 class ControlTanque:
     def __init__(self, fillling_btn_pin=13, draining_btn_pin=25, stop_all_btn_pin=32, filling_led_pin=14, draining_led_pin=12):
         self.sensor = SensorUltrasonico()
-        self.min_level = 10
+        self.min_level = 80
         self.max_level = 90
         self.stop_requested = False
         self.timer_bouncer = Timer(0)
 
-        # Estado de los procesos
         self.filling_active = False
         self.draining_active = False
 
@@ -179,5 +177,5 @@ if __name__ == "__main__":
     control = ControlTanque()
 
     while True:
-        time.sleep(3)
+        time.sleep(1)
         print("[INFO] Current level:", control.sensor.get_current_level(), "cm")
