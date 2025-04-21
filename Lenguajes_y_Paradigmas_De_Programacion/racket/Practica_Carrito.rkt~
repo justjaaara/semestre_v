@@ -1,0 +1,112 @@
+#lang racket
+
+(struct client (id username password balance))
+(struct seller (id username password))
+
+(define users
+  (list
+   (client 1 "luis_goez" "1411" 1000000)
+   (client 2 "felipe" "123" 500000)
+   (client 3 "pablo" "1234" 100000)
+   (seller 1 "juangui" "123")))
+
+(define (login username password)
+  (define (check-user u)
+    (cond
+      [(client? u)
+       (if (and (string=? (client-username u) username)
+                (string=? (client-password u) password))
+           (list "client" u)
+           #f)]
+      [(seller? u)
+       (if (and (string=? (seller-username u) username)
+                (string=? (seller-password u) password))
+           (list "seller" u)
+           #f)]
+      [else #f]))
+  (let loop ((lst users))
+    (cond
+      [(empty? lst) #f]
+      [(check-user (first lst)) => (lambda (res) res)]
+      [else (loop (rest lst))])))
+
+(define (view_inventory)
+  (displayln "Visualizar inventario"))
+
+(define (add_inventory)
+  (displayln "Añadir al inventario"))
+
+(define (remove_inventory)
+  (displayln "Eliminar del inventario"))
+
+(define (view_car)
+  (displayln "Visualizar carrito"))
+
+(define (add_car)
+  (displayln "Añadir al carrito"))
+
+(define (remove_car)
+  (displayln "Eliminar del carrito"))
+
+(define (pay)
+  (displayln "Pagar"))
+
+(define (shopping_car)
+  (displayln "Tienda Fe_Lu_Pa")
+  (displayln "1. Iniciar sesión")
+  (displayln "2. Exit")
+  (display "Ingresa lo que deseas hacer: ")
+  (define option (read))
+  (read-line)
+  (cond
+    [(= option 1)
+     (displayln "Bienvenido a Tienda Fe_Lu_Pa")
+     (display "Usuario: ")
+     (define username (read-line))
+     (display "Contraseña: ")
+     (define password (read-line))
+     (define result (login username password))
+     (if result
+         (let* ([type (first result)]
+                [data (second result)]
+                [msj (if (string=? type "client")
+                         (string-append "Bienvenido " type ": " (client-username data))
+                         (string-append "Bienvenido " type ": " (seller-username data)))] )
+           (displayln "Inicio de sesión exitoso.")
+           (displayln msj)
+           (cond
+             [(string=? type "seller")
+              (begin
+                (displayln "1. Visualizar inventario")
+                (displayln "2. Añadir al inventario")
+                (displayln "3. Eliminar del inventario")
+                (display "Ingrese la opción que deseas: ")
+                (let ([option2 (read)])
+                  (cond
+                    [(= option2 1) (view_inventory)]
+                    [(= option2 2) (add_inventory)]
+                    [(= option2 3) (remove_inventory)])))]
+             [else
+              (begin
+                (displayln "1. Visualizar productos")
+                (displayln "2. Visualizar carrito")
+                (displayln "3. Añadir al carrito")
+                (displayln "4. Eliminar del carrito")
+                (displayln "5. Pagar carrito")
+                (display "Ingrese la opción que deseas: ")
+                (let ([option2 (read)])
+                  (cond
+                    [(= option2 1) (view_inventory)]
+                    [(= option2 2) (view_car)]
+                    [(= option2 3) (add_car)]
+                    [(= option2 4) (remove_car)]
+                    [(= option2 5) (pay)])))]))
+         (displayln "Credenciales inválidas"))]
+
+    [(= option 2)
+     (displayln "Chao")]
+    [else
+     (displayln "ERROR: Opción no válida")]))
+
+
+(shopping_car)
