@@ -41,18 +41,9 @@ def gauss_seidel(A, b, x0, tol):
             iteracion += 1
         time_end = time.time()
         time_total = time_end - time_start
-        return x0, error, time_total
+        return x0
             
     else:
         print("El sistema iterativo no converge con el método de Jacobi")
 
 
-A = np.array([[3, -1, 0], [-1, 4, -1], [0, -1, 5]], dtype=float)
-b = np.array([2, 3, 5], dtype=float)
-tol = 1e-6
-x0 = np.zeros_like(b)
-
-solucion, error, tiempo = gauss_seidel(A, b, x0, tol)
-print("La solución es:", solucion)
-print("El error es:", error)
-print("El tiempo de cómputo es:", tiempo)
