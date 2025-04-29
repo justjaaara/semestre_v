@@ -23,6 +23,7 @@ def filtrarMayoresConBeneficio(genero: String, edad: Int, ultimo_placa: String) 
     "Cover"
   }
 }
+
 //Entrada a discoteca para mayores de edad con mujeres mayores de 20
 //con beneficio de parqueadero con la letra L (No cover) y
 //  hombres mayores de 18 sin beneficio
@@ -43,15 +44,33 @@ def main(): Unit = {
   val mayoresDeEdad = filtrarMayoresDeEdad(edades)
   println(s"Mayores de edad: $mayoresDeEdad \n")
 
-  println("------- DISCOTECA ----------\n")
-  print("Ingrese su genero (Hombre/Mujer): ")
-  val genero = readLine()
-  print("Ingrese su edad: ")
-  val edad = readLine()
-  print("Ingrese la placa del vehiculo: ")
-  val placa = readLine()
-  
-  val respuesta = filtrarMayoresConBeneficio(genero, edad.toInt, placa.last.toString)
-  print(s"Respuesta: $respuesta \n")
+//  println("------- DISCOTECA ----------\n")
+//  print("Ingrese su genero (Hombre/Mujer): ")
+//  val genero = readLine()
+//  print("Ingrese su edad: ")
+//  val edad = readLine()
+//  print("Ingrese la placa del vehiculo: ")
+//  val placa = readLine()
+//
+//  val respuesta = filtrarMayoresConBeneficio(genero, edad.toInt, placa.last.toString)
+//  print(s"Respuesta: $respuesta \n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
 
 }
