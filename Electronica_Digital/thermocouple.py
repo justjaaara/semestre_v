@@ -21,7 +21,18 @@ class Thermocouple:
         time.sleep(1e-6)
         self.chip_select.value(1)
         
+        response = list(response)
         print(f"[INFO] Response: {response}")
+        
+        byte_high = response[0]<<8 #'<<' Correr 8 posiciones a la derecha (agrega 8 0's a la derecha del numero)
+        byte_low = response[1]
+        bin_response = byte_high + byte_low
+        bin_response = bin_response>>3 #Agrega ceros a la izquierda lo que corre el numero a la derecha
+        
+        temperature = bin_response/4
+        print(f"[INFO] Temperature: {temperature}")
+        
+        
         
 if __name__ == "__main__":
     sensor = Thermocouple()
