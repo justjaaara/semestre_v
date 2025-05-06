@@ -1,8 +1,8 @@
 import sympy as sp
 import numpy as np
-x = sp.symbols('x')
 
-def lagrange(x_data, y_data):
+def lagrange_pol(x_data, y_data):
+    x = sp.symbols('x')
     
     P = 0 # Acumulador del polinomio
     n = len(x_data) # Número de datos
