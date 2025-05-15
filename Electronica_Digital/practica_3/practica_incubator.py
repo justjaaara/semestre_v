@@ -10,13 +10,30 @@ class Thermocouple:
         self.cs.value(1)
 
     def read_temp(self):
+        self.cs.value(1)
+        time.sleep(1) 
+        
         self.cs.value(0)
-        time.sleep_us(10)
-        raw = self.bus.read(2)
+        time.sleep_us(1)  
+
+        response = self.bus.read(2)
+        time.sleep_us(1)
         self.cs.value(1)
 
-        value = (raw[0] << 8 | raw[1]) >> 3
-        return value * 0.25
+        if response is None or len(response) != 2:
+            print("[ERROR] Error de lectura SPI: respuesta inválida")
+            return -1  
+
+        response = list(response)
+
+        byte_high = response[0] << 8
+        byte_low = response[1]
+        bin_response = byte_high + byte_low
+        bin_response = bin_response >> 3
+
+        temperature = bin_response / 4  # Cada unidad representa 0.25 °C
+        return temperature
+
 
 class GenericADC:
     def __init__(self, pin, scale=3.3, resolution=4095):
@@ -45,14 +62,12 @@ class LEDController:
         self.blue_low_warning_led = Pin(2, Pin.OUT)
 
     def load_config(self, path):
-
             with open(path) as f:
                 config = ujson.load(f)
                 self.warning_level = config["warning_level"]
                 self.emergency_level = config["emergency_level"]
                 self.low_voltage_threshold = config["low_voltage_threshold"]
                 self.sensor_source = config["sensor_source"]
-
 
     def update_leds(self, temp, voltage):
         if temp < self.warning_level:
@@ -85,7 +100,7 @@ class UARTLogger:
             "Voltage": voltage,
             "sensor_in_use": "LM35" if temp_lm35 else "Thermocouple"
         })
-        self.uart.write("\n" + msg)
+        self.uart.write("\n\r" + msg)
 
 def adc_worker(adc_lm35, adc_voltage):
     while True:
