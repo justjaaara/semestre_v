@@ -1,0 +1,137 @@
+{
+  "totalVentasPorMarca" : {
+    "Toyota" : 37000,
+    "Chevrolet" : 38000,
+    "Tesla" : 60000,
+    "Mazda" : 40000000,
+    "Hyundai" : 82000,
+    "Ford" : 45000,
+    "Kia" : 35000,
+    "Honda" : 25000
+  },
+  "vehiculosCaros" : [ {
+    "marca" : "Mazda",
+    "precio" : 40000000,
+    "id" : 109,
+    "modelo" : "CX-5",
+    "año" : 2022
+  } ],
+  "vehiculoMasCaroUltimoAnio" : {
+    "marca" : "Kia",
+    "precio" : 35000,
+    "id" : 108,
+    "modelo" : "Sportage",
+    "año" : 2025
+  },
+  "ventasOrdenadasPorAnio" : [ {
+    "id" : 1,
+    "vehiculo" : {
+      "marca" : "Toyota",
+      "precio" : 7000,
+      "id" : 101,
+      "modelo" : "Corolla Cross",
+      "año" : 2025
+    },
+    "vendedor" : "Juan",
+    "cliente" : "Gui"
+  }, {
+    "id" : 8,
+    "vehiculo" : {
+      "marca" : "Kia",
+      "precio" : 35000,
+      "id" : 108,
+      "modelo" : "Sportage",
+      "año" : 2025
+    },
+    "vendedor" : "Laura",
+    "cliente" : "Javier"
+  }, {
+    "id" : 6,
+    "vehiculo" : {
+      "marca" : "Toyota",
+      "precio" : 30000,
+      "id" : 106,
+      "modelo" : "RAV4",
+      "año" : 2024
+    },
+    "vendedor" : "Ana",
+    "cliente" : "Luis"
+  }, {
+    "id" : 2,
+    "vehiculo" : {
+      "marca" : "Honda",
+      "precio" : 25000,
+      "id" : 102,
+      "modelo" : "Civic",
+      "año" : 2023
+    },
+    "vendedor" : "Luis",
+    "cliente" : "P"
+  }, {
+    "id" : 7,
+    "vehiculo" : {
+      "marca" : "Hyundai",
+      "precio" : 60000,
+      "id" : 107,
+      "modelo" : "Tucson",
+      "año" : 2023
+    },
+    "vendedor" : "Mario",
+    "cliente" : "Marta"
+  }, {
+    "id" : 7,
+    "vehiculo" : {
+      "marca" : "Hyundai",
+      "precio" : 22000,
+      "id" : 107,
+      "modelo" : "Elantra",
+      "año" : 2023
+    },
+    "vendedor" : "Carlos",
+    "cliente" : "Marta"
+  }, {
+    "id" : 4,
+    "vehiculo" : {
+      "marca" : "Tesla",
+      "precio" : 60000,
+      "id" : 104,
+      "modelo" : "Model 3",
+      "año" : 2022
+    },
+    "vendedor" : "Sofí",
+    "cliente" : "a"
+  }, {
+    "id" : 9,
+    "vehiculo" : {
+      "marca" : "Mazda",
+      "precio" : 40000000,
+      "id" : 109,
+      "modelo" : "CX-5",
+      "año" : 2022
+    },
+    "vendedor" : "Pedro",
+    "cliente" : "Sofia"
+  }, {
+    "id" : 3,
+    "vehiculo" : {
+      "marca" : "Ford",
+      "precio" : 45000,
+      "id" : 103,
+      "modelo" : "Mustang",
+      "año" : 2021
+    },
+    "vendedor" : "Sara",
+    "cliente" : "Falta"
+  }, {
+    "id" : 5,
+    "vehiculo" : {
+      "marca" : "Chevrolet",
+      "precio" : 38000,
+      "id" : 105,
+      "modelo" : "Camaro",
+      "año" : 2020
+    },
+    "vendedor" : "Diego",
+    "cliente" : "Roberto"
+  } ]
+}
