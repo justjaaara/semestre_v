@@ -4,6 +4,7 @@ import java.io._
 case class Vehiculo(id: Int, marca: String, modelo: String, año: Int, precio: Double)
 case class Venta(id: Int, vehiculo: Vehiculo, vendedor: String, cliente: String)
 
+object MainApp{
 def totalVentasPorMarcas(ventas: List[Venta]): Map[String, Double] = {
   ventas.groupBy(_.vehiculo.marca)
     .map { case (marca, ventas) =>
@@ -15,34 +16,31 @@ def vehiculosCaros(ventas: List[Venta]): List[Vehiculo] = {
   ventas.filter(_.vehiculo.precio > 30000000).map(_.vehiculo)
 }
 
-// Encontrar el vehículo más caro vendido usando reduce en el último año vigente.
 def vehiculoMasCaroVendido(ventas: List[Venta]): Vehiculo ={
   val vehiculosUltimoAnio = ventas.filter(_.vehiculo.año == 2025)
   vehiculosUltimoAnio.map(_.vehiculo).reduce((v1, v2) => if (v1.precio > v2.precio) v1 else v2)
 }
-// Ordenar las ventas por año del vehículo de más reciente a más antiguo usando sortBy.
 def ordenarVentasPorAnio(ventas: List[Venta]) : List[Venta] = {
   ventas.sortBy(_.vehiculo.año)(Ordering[Int].reverse)
 }
 
-// Generar un reporte en formato JSON con las estadísticas generadas.
 implicit val vehiculoWrites: Writes[Vehiculo] = Json.writes[Vehiculo]
 implicit val ventaWrites: Writes[Venta] = Json.writes[Venta]
 
 @main
-def main(): Unit =
-  val ventas = List(Venta(1, Vehiculo(101, "Toyota", "Corolla Cross", 2025, 7000),"Juan", "Gui"),
-                    Venta(2, Vehiculo(102, "Honda", "Civic", 2023, 25000),"Luis", "P"),
-                    Venta(3, Vehiculo(103, "Ford", "Mustang", 2021, 45000),"Sara", "Falta"),
-                    Venta(4, Vehiculo(104, "Tesla", "Model 3", 2022, 60000), "Sofí", "a"),
-                    Venta(5, Vehiculo(105, "Chevrolet", "Camaro", 2020, 38000), "Diego", "Roberto"),
-                    Venta(6, Vehiculo(106, "Toyota", "RAV4", 2024, 30000), "Ana", "Luis"),
-                    Venta(7, Vehiculo(107, "Hyundai", "Tucson", 2023, 60000), "Mario", "Marta"),
-                    Venta(7, Vehiculo(107, "Hyundai", "Elantra", 2023, 22000), "Carlos", "Marta"),
-                    Venta(8, Vehiculo(108, "Kia", "Sportage", 2025, 35000), "Laura", "Javier"),
-                    Venta(9, Vehiculo(109, "Mazda", "CX-5", 2022, 40000000), "Pedro", "Sofia"),
+def main(): Unit = {
+  val ventas = List(Venta(1, Vehiculo(101, "Toyota", "Corolla Cross", 2025, 7000), "Juan", "Gui"),
+    Venta(2, Vehiculo(102, "Honda", "Civic", 2023, 25000), "Luis", "P"),
+    Venta(3, Vehiculo(103, "Ford", "Mustang", 2021, 45000), "Sara", "Falta"),
+    Venta(4, Vehiculo(104, "Tesla", "Model 3", 2022, 60000), "Sofí", "a"),
+    Venta(5, Vehiculo(105, "Chevrolet", "Camaro", 2020, 38000), "Diego", "Roberto"),
+    Venta(6, Vehiculo(106, "Toyota", "RAV4", 2024, 30000), "Ana", "Luis"),
+    Venta(7, Vehiculo(107, "Hyundai", "Tucson", 2023, 60000), "Mario", "Marta"),
+    Venta(7, Vehiculo(107, "Hyundai", "Elantra", 2023, 22000), "Carlos", "Marta"),
+    Venta(8, Vehiculo(108, "Kia", "Sportage", 2025, 35000), "Laura", "Javier"),
+    Venta(9, Vehiculo(109, "Mazda", "CX-5", 2022, 40000000), "Pedro", "Sofia"),
 
-                    )
+  )
 
   // Calcular el total de ventas por marca
   val totalPorMarca = totalVentasPorMarcas(ventas)
@@ -58,13 +56,13 @@ def main(): Unit =
 
   println("---------------------------------------------------------------------------------------------------------------")
 
-// Encontrar el vehiculo mas caro vendido en el ultimo año vigente
+  // Encontrar el vehiculo mas caro vendido en el ultimo año vigente
   val v = vehiculoMasCaroVendido(ventas)
   println(s"Vehiculo más caro vendido en el último año: ${v.marca} ${v.modelo} por ${v.precio}")
 
   println("---------------------------------------------------------------------------------------------------------------")
 
-//ordenar ventas por año del más reciente al más antiguo
+  //ordenar ventas por año del más reciente al más antiguo
   val ventasOrdenadas = ordenarVentasPorAnio(ventas)
   println(s"Ventas ordenadas por año (de más reciente a más antiguo)  ")
   ventasOrdenadas.map(x => println(s"Vehículo: ${x.vehiculo.marca} ${x.vehiculo.modelo}, Año: ${x.vehiculo.año}, Precio: ${x.vehiculo.precio}"))
@@ -89,3 +87,4 @@ def main(): Unit =
   archivo.close()
 
   println("✅ Reporte guardado en 'reportes/reporte_ventas.json'")
+}
