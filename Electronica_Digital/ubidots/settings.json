@@ -1,0 +1,9 @@
+{
+"token" : "BBUS-9ENEhqQO3B9LYqHhyCTVgR46Zuz0PJ",
+"host": "industrial.api.ubidots.com"
+"device_label": "tempmonitor",
+"variable_label" : "temperature",
+"ssid" : "SaraP",
+"password": "sara1234"
+
+}
