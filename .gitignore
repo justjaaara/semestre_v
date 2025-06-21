@@ -1,0 +1,15 @@
+.venv
+venv/
+.vscode
+# IntelliJ / VS Code
+.idea/
+*.iml
+
+# Java/Scala
+target/
+*.class
+*.log
+
+# Python
+__pycache__/
+*.pyc

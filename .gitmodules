@@ -1,0 +1,18 @@
+[submodule "Lenguajes_y_Paradigmas_De_Programacion/Racket/practica_racket"]
+	path = Lenguajes_y_Paradigmas_De_Programacion/Racket/practica_racket
+	url = git@github.com:justjaaara/practica_racket.git
+[submodule "Lenguajes_y_Paradigmas_De_Programacion/Scala/reto_scala/reto_scala"]
+	path = Lenguajes_y_Paradigmas_De_Programacion/Scala/reto_scala/reto_scala
+	url = git@github.com:justjaaara/reto_scala.git
+[submodule "Lenguajes_y_Paradigmas_De_Programacion/ar_project/ar_project"]
+	path = Lenguajes_y_Paradigmas_De_Programacion/ar_project/ar_project
+	url = git@github.com:justjaaara/ar_project.git
+[submodule "Lenguajes_y_Paradigmas_De_Programacion/comparacion_lenguajes"]
+	path = Lenguajes_y_Paradigmas_De_Programacion/comparacion_lenguajes
+	url = git@github.com:justjaaara/comparacion_lenguajes.git
+[submodule "Lenguajes_y_Paradigmas_De_Programacion/lenguajes_paradigmas/proyecto_logs"]
+	path = Lenguajes_y_Paradigmas_De_Programacion/lenguajes_paradigmas/proyecto_logs
+	url = git@github.com:justjaaara/proyecto_logs.git
+[submodule "Proyecto_Ingenieria_I/conecta"]
+	path = Proyecto_Ingenieria_I/conecta
+	url = git@github.com:justjaaara/CONECTA.git

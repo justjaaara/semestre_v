@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Contenedores - Aerolínea Wings" id="T4j1Tx2n3pAyWVcKPOyZ">
+    <mxGraphModel dx="1420" dy="849" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Actores -->
+        <mxCell id="actor1" value="Pasajero" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#CCCCFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="20" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="actor2" value="Administrador" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#CCCCFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="20" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="actor3" value="Operador de Aerolínea" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#CCCCFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="20" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="actor4" value="Agente de Ventas" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#CCCCFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="20" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Frontend Web -->
+        <mxCell id="frontend" value="Frontend Web (React)\n- Consulta de vuelos\n- Check-in y reservas\n- Comunicación GraphQL" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#DAE8FC;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="120" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Dashboard -->
+        <mxCell id="dashboard" value="Dashboard (Grafana + Kibana)\n- Visualización de métricas y logs\n- Uso por administrador" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#F8CECC;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="gateway" value="API Gateway\n(Spring Cloud Gateway)\n- Controla tráfico y rutas" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#FFE6CC;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="250" width="200" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Servicios backend -->
+        <mxCell id="servicios" value="Microservicios (Spring Boot)\n- Reservas\n- Vuelos\n- Usuarios" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#D5A6BD;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="350" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- DB -->
+        <mxCell id="db" value="PostgreSQL\n- Base de datos relacional" style="shape=cylinder;whiteSpace=wrap;rounded=0;fillColor=#E1D5E7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="400" y="350" width="140" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- AWS Cognito -->
+        <mxCell id="cognito" value="AWS Cognito\n- Gestión de usuarios\n- Autenticación MFA\n- Roles RBAC" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#B6D7A8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="570" y="250" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Observabilidad -->
+        <mxCell id="logstash" value="Logstash\n- Recolección de logs" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#F9CB9C;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="360" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prometheus" value="Prometheus\n- Métricas de sistema" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#F9CB9C;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="360" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Relaciones -->
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="actor1" target="frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="actor2" target="dashboard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="actor3" target="frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="actor4" target="frontend">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="frontend" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="gateway" target="servicios">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="servicios" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="frontend" target="cognito">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="servicios" target="logstash">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell style="endArrow=block;strokeColor=#000000;" edge="1" parent="1" source="servicios" target="prometheus">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
