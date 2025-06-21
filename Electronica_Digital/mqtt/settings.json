@@ -1,0 +1,9 @@
+{
+"broker": "broker.hivemq.com",
+"port": 1883,
+"topic_pub": "aranjuez/aranjuezreal/12/1210/battery"
+"topic_sub": "aranjuez/aranjuezreal/#/#/battery"
+"ssid" : "Jara",
+"password": "f12345678"
+
+}
